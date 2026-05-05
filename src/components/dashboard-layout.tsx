@@ -58,9 +58,14 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
         <Separator className="bg-zinc-800" />
 
-        <div className="p-4">
-          <p className="text-sm text-zinc-400">{usuario?.nombreCompleto}</p>
-          <p className="text-xs text-zinc-500">{usuario?.rol}</p>
+        <div className="p-4 flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-sm shrink-0">
+            {usuario?.nombreCompleto?.charAt(0) ?? "?"}
+          </div>
+          <div className="min-w-0">
+            <p className="text-sm text-zinc-400 truncate">{usuario?.nombreCompleto}</p>
+            <p className="text-xs text-zinc-500">{usuario?.rol}</p>
+          </div>
           <Button
             variant="ghost"
             size="sm"
