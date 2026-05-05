@@ -54,11 +54,18 @@ export default function DashboardPage() {
   const totalHoy = ventas.reduce((sum, v) => sum + v.total, 0);
   const stockBajo = productos.filter((p) => p.tieneBajoStock);
 
-  const chartData = ventasPorDia.map((v) => ({
-    dia: new Date(v.fecha).toLocaleDateString("es-AR", { weekday: "short", day: "numeric" }),
-    total: v.totalVentas,
-    cantidad: v.cantidadVentas,
-  }));
+  // Rellenar los 7 dias (dias sin ventas = 0)
+  const chartData = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() - (6 - i));
+    const dateStr = d.toISOString().split("T")[0];
+    const match = ventasPorDia.find((v) => v.fecha.startsWith(dateStr));
+    return {
+      dia: d.toLocaleDateString("es-AR", { weekday: "short", day: "numeric" }),
+      total: match?.totalVentas ?? 0,
+      cantidad: match?.cantidadVentas ?? 0,
+    };
+  });
 
   return (
     <DashboardLayout>

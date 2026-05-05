@@ -2,6 +2,23 @@
 
 Dashboard de metricas y gestion para negocios gastronomicos. Consume una API REST con autenticacion JWT y muestra datos en tiempo real.
 
+## Screenshots
+
+### Login
+![Login](docs/login.png)
+
+### Dashboard
+![Dashboard](docs/dashboard.png)
+
+### Productos
+![Productos](docs/productos.png)
+
+### Ventas
+![Ventas](docs/ventas.png)
+
+### Reportes
+![Reportes](docs/reportes.png)
+
 ## Tech Stack
 
 - **Next.js 16** (App Router)
